@@ -1,0 +1,33 @@
+{
+  "name": "seopilot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "clean": "rimraf dist",
+    "build": "npm run clean && tsc",
+    "seo": "npx seopilot",
+    "test-local": "npx seopilot --path src/testing --verbose"
+  },
+  "bin": {
+    "seopilot": "./bin/seopilot.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "cheerio": "^1.1.0",
+    "globby": "^14.1.0",
+    "p-map": "^7.0.3"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.22.35",
+    "@types/node": "^24.0.13",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
