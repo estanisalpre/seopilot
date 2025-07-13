@@ -1,8 +1,8 @@
 {
   "name": "seopilot",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.1",
+  "description": "Herramienta CLI para análisis SEO en sitios estáticos.",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "ts-node src/index.ts",
     "clean": "rimraf dist",
@@ -13,9 +13,9 @@
   "bin": {
     "seopilot": "./bin/seopilot.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["seo", "html", "cli", "analyzer", "static-site"],
+  "author": "Estanislao Salinas Previte",
+  "license": "MIT",
   "type": "commonjs",
   "dependencies": {
     "chalk": "^5.4.1",
@@ -29,5 +29,9 @@
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
-  }
+  },
+  "files": [
+    "bin",
+    "dist"
+  ]
 }

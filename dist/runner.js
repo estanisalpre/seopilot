@@ -45,6 +45,10 @@ async function runChecks(options) {
     const basePath = options.basePath || 'dist';
     const allFiles = await (0, globby_1.globby)([`${basePath}/**/*.html`]);
     const files = options.limit ? allFiles.slice(0, options.limit) : allFiles;
+    if (files.length === 0) {
+        console.log('⚠️  No se encontraron archivos HTML para analizar.');
+        return false;
+    }
     if (!options.json && allFiles.length > files.length) {
         console.log(`⚠️  Detectados ${allFiles.length} archivos. Escaneando solo los primeros ${files.length}. Usa --limit para aumentar.`);
     }
