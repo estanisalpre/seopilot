@@ -16,7 +16,7 @@
   "keywords": ["seo", "html", "cli", "analyzer", "static-site"],
   "author": "Estanislao Salinas Previte",
   "license": "MIT",
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
     "chalk": "^5.4.1",
     "cheerio": "^1.1.0",
