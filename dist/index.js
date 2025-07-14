@@ -1,5 +1,5 @@
-import { runChecks } from './runner';
-import { detectOutputDir } from './utils/detectFramework';
+import { runChecks } from './runner.js';
+import { detectOutputDir } from './utils/detectFramework.js';
 // Detecta si se debe fallar al encontrar errores
 // Si se especifica --fail-on-error, se toma como true
 const failOnError = process.argv.includes('--fail-on-error');
