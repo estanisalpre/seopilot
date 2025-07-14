@@ -2,7 +2,7 @@ import { globby } from 'globby';
 import pMap from 'p-map';
 import fs from 'fs';
 import * as cheerio from 'cheerio';
-import { report } from './reporter';
+import { report } from './reporter.js';
 
 type CheckOptions = {
   failOnError?: boolean;
