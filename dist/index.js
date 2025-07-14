@@ -12,7 +12,7 @@ const basePath = customPath || detectOutputDir();
 // Si se especifica --limit, se toma el valor siguiente
 // Si no, se usa un valor por defecto (por ejemplo, 100)
 const limitIndex = process.argv.indexOf('--limit');
-const limit = limitIndex !== -1 ? parseInt(process.argv[limitIndex + 1]) : 100; // Límite por defecto de 100 archivos
+const limit = limitIndex !== -1 ? parseInt(process.argv[limitIndex + 1]) : 100;
 // Si no se especifica, no hay límite
 // Si se especifica --verbose, se toma como true
 // Esto podría usarse para mostrar más detalles en la salida
