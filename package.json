@@ -1,6 +1,6 @@
 {
   "name": "seopilot",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Herramienta CLI para análisis SEO en sitios estáticos.",
   "main": "dist/index.js",
   "scripts": {
