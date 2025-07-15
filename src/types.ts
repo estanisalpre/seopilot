@@ -18,3 +18,11 @@ export type FileError = {
   file: string;
   messages: CheckResult[];
 };
+
+export type GlobalCheckResult = {
+  message: string;
+  category: SEOCategory;
+};
+
+export type HtmlCheck = ($: cheerio.CheerioAPI) => CheckResult[];
+export type GlobalCheck = (basePath: string) => CheckResult[];

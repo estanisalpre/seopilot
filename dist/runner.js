@@ -3,7 +3,7 @@ import pMap from "p-map";
 import fs from "fs";
 import * as cheerio from "cheerio";
 import { report } from "./reporter.js";
-import { checks } from "./checks/index.js";
+import { htmlChecks, globalChecks } from "./checks/index.js";
 export async function runChecks(options) {
     const basePath = options.basePath || "dist";
     const allFiles = await globby([`${basePath}/**/*.html`]);
@@ -19,11 +19,12 @@ export async function runChecks(options) {
     const categorizedErrors = {};
     const categorySummary = {};
     const fileErrors = [];
+    // Ejecutar los checks por archivo HTML
     await pMap(files, async (file) => {
         const html = fs.readFileSync(file, "utf8");
         const $ = cheerio.load(html);
         const errors = [];
-        for (const check of checks) {
+        for (const check of htmlChecks) {
             const result = check($);
             if (result.length > 0) {
                 errors.push(...result);
@@ -33,9 +34,8 @@ export async function runChecks(options) {
             hasErrors = true;
             fileErrors.push({ file, messages: errors });
             errors.forEach(({ message, category }) => {
-                if (!categorizedErrors[category]) {
+                if (!categorizedErrors[category])
                     categorizedErrors[category] = {};
-                }
                 categorizedErrors[category][message] =
                     (categorizedErrors[category][message] || 0) + 1;
                 categorySummary[category] = (categorySummary[category] || 0) + 1;
@@ -48,6 +48,25 @@ export async function runChecks(options) {
             report(file, []);
         }
     }, { concurrency: 10 });
+    // Ejecutar los checks globales una vez
+    for (const check of globalChecks) {
+        const results = check(basePath);
+        if (results.length > 0) {
+            hasErrors = true;
+            fileErrors.push({ file: "[global]", messages: results });
+            results.forEach(({ message, category }) => {
+                if (!categorizedErrors[category])
+                    categorizedErrors[category] = {};
+                categorizedErrors[category][message] =
+                    (categorizedErrors[category][message] || 0) + 1;
+                categorySummary[category] = (categorySummary[category] || 0) + 1;
+            });
+            if (options.verbose && !options.json) {
+                report("[global]", results);
+            }
+        }
+    }
+    // Output
     if (options.json) {
         const detailed = {};
         Object.values(categorizedErrors).forEach((group) => {

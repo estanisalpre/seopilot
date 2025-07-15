@@ -3,12 +3,13 @@ import pMap from "p-map";
 import fs from "fs";
 import * as cheerio from "cheerio";
 import { report } from "./reporter.js";
-import { checks } from "./checks/index.js";
+import { htmlChecks, globalChecks } from "./checks/index.js";
 import {
   CheckResult,
   CheckOptions,
   FileError,
   CategorizedErrors,
+  GlobalCheckResult,
 } from "./types.js";
 
 export async function runChecks(options: CheckOptions): Promise<boolean> {
@@ -32,6 +33,7 @@ export async function runChecks(options: CheckOptions): Promise<boolean> {
   const categorySummary: Record<string, number> = {};
   const fileErrors: FileError[] = [];
 
+  // Ejecutar los checks por archivo HTML
   await pMap(
     files,
     async (file) => {
@@ -39,7 +41,7 @@ export async function runChecks(options: CheckOptions): Promise<boolean> {
       const $ = cheerio.load(html);
       const errors: CheckResult[] = [];
 
-      for (const check of checks) {
+      for (const check of htmlChecks) {
         const result = check($ as cheerio.CheerioAPI);
         if (result.length > 0) {
           errors.push(...result);
@@ -51,9 +53,7 @@ export async function runChecks(options: CheckOptions): Promise<boolean> {
         fileErrors.push({ file, messages: errors });
 
         errors.forEach(({ message, category }) => {
-          if (!categorizedErrors[category]) {
-            categorizedErrors[category] = {};
-          }
+          if (!categorizedErrors[category]) categorizedErrors[category] = {};
           categorizedErrors[category][message] =
             (categorizedErrors[category][message] || 0) + 1;
           categorySummary[category] = (categorySummary[category] || 0) + 1;
@@ -69,6 +69,27 @@ export async function runChecks(options: CheckOptions): Promise<boolean> {
     { concurrency: 10 }
   );
 
+  // Ejecutar los checks globales una vez
+  for (const check of globalChecks) {
+    const results = check(basePath);
+    if (results.length > 0) {
+      hasErrors = true;
+      fileErrors.push({ file: "[global]", messages: results });
+
+      results.forEach(({ message, category }) => {
+        if (!categorizedErrors[category]) categorizedErrors[category] = {};
+        categorizedErrors[category][message] =
+          (categorizedErrors[category][message] || 0) + 1;
+        categorySummary[category] = (categorySummary[category] || 0) + 1;
+      });
+
+      if (options.verbose && !options.json) {
+        report("[global]", results);
+      }
+    }
+  }
+
+  // Output
   if (options.json) {
     const detailed: Record<string, number> = {};
     Object.values(categorizedErrors).forEach((group) => {

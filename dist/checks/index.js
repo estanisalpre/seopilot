@@ -3,6 +3,8 @@
 import { checkImageAlt } from "./accessibility/checkImageAlt.js";
 import { checkButtons } from "./accessibility/checkButtons.js";
 import { checkFormLabels } from "./accessibility/checkFormLabels.js";
+import { checkTouchTargets } from "./accessibility/checkTouchTargets.js";
+import { checkIframesHaveTitle } from "./accessibility/checkIframesHaveTitle.js";
 // check media
 import { checkImageFormats } from "./media/checkImageFormats.js";
 import { checkLazyLoading } from "./media/checkLazyLoading.js";
@@ -10,6 +12,8 @@ import { checkLazyLoading } from "./media/checkLazyLoading.js";
 import { checkMetaDescription } from "./meta/checkMetaDescription.js";
 import { checkCanonical } from "./meta/checkCanonical.js";
 import { checkOpenGraph } from "./meta/checkOpenGraph.js";
+import { checkMetaAuthorGenerator } from "./meta/checkMetaAuthorGenerator.js";
+import { checkMetaRobots } from "./meta/checkMetaRobots.js";
 // check links
 import { checkAnchorTargets } from "./links/checkAnchorTargets.js";
 // check performance
@@ -22,8 +26,14 @@ import { checkLangAttr } from "./semantics/checkLangAttr.js";
 import { checkMainElement } from "./semantics/checkMainElement.js";
 import { checkMetaCharset } from "./semantics/checkMetaCharset.js";
 import { checkTitle } from "./semantics/checkTitle.js";
-// export 
-export const checks = [
+import { checkDuplicateTags } from "./semantics/checkDuplicateTags.js";
+// check global
+import { checkSiteFilesExist } from "./global/checkSiteFilesExist.js";
+// check external
+import { checkGoogleFontDisplaySwap } from "./external/checkGoogleFontDisplaySwap.js";
+import { checkTrackingDuplicates } from "./external/checkTrackingDuplicates.js";
+// export
+export const htmlChecks = [
     checkSingleH1,
     checkLangAttr,
     checkMainElement,
@@ -41,4 +51,14 @@ export const checks = [
     checkAnchorTargets,
     checkImageFormats,
     checkLazyLoading,
+    checkMetaAuthorGenerator,
+    checkMetaRobots,
+    checkDuplicateTags,
+    checkTouchTargets,
+    checkIframesHaveTitle,
+    checkGoogleFontDisplaySwap,
+    checkTrackingDuplicates,
+];
+export const globalChecks = [
+    checkSiteFilesExist,
 ];
