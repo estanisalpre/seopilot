@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Falta <meta charset> al principio -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Falta <meta name="description"> -->
+    <!-- Falta <link rel="canonical"> -->
+    <!-- Falta meta Open Graph -->
+    <title></title> <!-- Está vacío pero existe -->
+    <script src="script.js"></script> <!-- No tiene async ni defer -->
+  </head>
+  <body>
+    <header>
+      <h1>Primer título</h1>
+    </header>
+
+    <main>
+      <h1>Segundo título</h1> <!-- Error: más de un <h1> -->
+      <img src="foto.png"> <!-- Sin alt -->
+      <img src="foto2.jpg" loading="eager"> <!-- Sin loading="lazy" y formato no moderno -->
+      <img src="foto3.bmp"> <!-- Formato no moderno -->
+    </main>
+
+    <a href="https://malicioso.com" target="_blank">Click acá</a> <!-- Sin rel="noopener" -->
+
+    <form>
+      <input type="text" id="username"> <!-- Sin <label for="username"> -->
+      <textarea id="mensaje"></textarea> <!-- Sin label -->
+    </form>
+
+    <button></button> <!-- Sin texto ni aria-label -->
+  </body>
+</html>

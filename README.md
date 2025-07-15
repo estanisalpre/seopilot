@@ -265,7 +265,7 @@ npx seopilot --path src/testing --verbose
 
 ## 🧠 Autor
 
-Creado por [@estanisdev](https://github.com/estanisdev) — para que ningún proyecto se quede sin SEO por descuido.
+Creado por [@estanisalpre](https://github.com/estanisalpre) — para que ningún proyecto se quede sin SEO por descuido.
 
 ---
 
