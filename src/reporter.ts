@@ -1,12 +1,21 @@
-import chalk from 'chalk';
+import chalk from "chalk";
+import { CheckResult } from "./types.js";
 
-export function report(file: string, errors: string[]) {
+const categoryIcons: Record<CheckResult["category"], string> = {
+  SEO: "🧠",
+  Accessibility: "♿",
+  Performance: "⚡",
+  Structure: "🧱",
+};
+
+export function report(file: string, errors: CheckResult[]) {
   if (errors.length === 0) {
-    console.log(`${chalk.green('✔')} ${file}`);
+    console.log(`${chalk.green("✔")} ${file}`);
   } else {
-    console.log(`${chalk.red('✖')} ${file}`);
-    errors.forEach((err) => {
-      console.log('   ' + chalk.red(err));
+    console.log(`${chalk.red("✖")} ${file}`);
+    errors.forEach(({ message, category }) => {
+      const icon = categoryIcons[category] || "📄";
+      console.log(`   ${icon} ${chalk.red(message)}`);
     });
   }
 }

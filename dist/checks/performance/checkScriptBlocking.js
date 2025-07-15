@@ -1,0 +1,12 @@
+export function checkScriptBlocking($) {
+    const scripts = $("script").filter((_, el) => !$(el).attr("async") && !$(el).attr("defer"));
+    if (scripts.length > 0) {
+        return [
+            {
+                message: `${scripts.length} <script> sin async o defer`,
+                category: "Performance",
+            },
+        ];
+    }
+    return [];
+}
