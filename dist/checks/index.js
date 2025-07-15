@@ -20,6 +20,7 @@ import { checkAnchorTargets } from "./links/checkAnchorTargets.js";
 import { checkViewportMeta } from "./performance/checkViewportMeta.js";
 import { checkScriptBlocking } from "./performance/checkScriptBlocking.js";
 import { checkPreload } from "./performance/checkPreload.js";
+import { checkViewportMetaResponsive } from "./performance/checkViewportMetaResponsive.js";
 // check semantics
 import { checkSingleH1 } from "./semantics/checkSingleH1.js";
 import { checkLangAttr } from "./semantics/checkLangAttr.js";
@@ -58,6 +59,7 @@ export const htmlChecks = [
     checkIframesHaveTitle,
     checkGoogleFontDisplaySwap,
     checkTrackingDuplicates,
+    checkViewportMetaResponsive,
 ];
 export const globalChecks = [
     checkSiteFilesExist,

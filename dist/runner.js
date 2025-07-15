@@ -19,7 +19,6 @@ export async function runChecks(options) {
     const categorizedErrors = {};
     const categorySummary = {};
     const fileErrors = [];
-    // Ejecutar los checks por archivo HTML
     await pMap(files, async (file) => {
         const html = fs.readFileSync(file, "utf8");
         const $ = cheerio.load(html);
@@ -48,7 +47,6 @@ export async function runChecks(options) {
             report(file, []);
         }
     }, { concurrency: 10 });
-    // Ejecutar los checks globales una vez
     for (const check of globalChecks) {
         const results = check(basePath);
         if (results.length > 0) {
@@ -66,7 +64,6 @@ export async function runChecks(options) {
             }
         }
     }
-    // Output
     if (options.json) {
         const detailed = {};
         Object.values(categorizedErrors).forEach((group) => {
