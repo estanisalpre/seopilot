@@ -9,7 +9,6 @@ import {
   CheckOptions,
   FileError,
   CategorizedErrors,
-  GlobalCheckResult,
 } from "./types.js";
 
 export async function runChecks(options: CheckOptions): Promise<boolean> {
@@ -33,7 +32,6 @@ export async function runChecks(options: CheckOptions): Promise<boolean> {
   const categorySummary: Record<string, number> = {};
   const fileErrors: FileError[] = [];
 
-  // Ejecutar los checks por archivo HTML
   await pMap(
     files,
     async (file) => {
@@ -69,7 +67,6 @@ export async function runChecks(options: CheckOptions): Promise<boolean> {
     { concurrency: 10 }
   );
 
-  // Ejecutar los checks globales una vez
   for (const check of globalChecks) {
     const results = check(basePath);
     if (results.length > 0) {
@@ -89,7 +86,6 @@ export async function runChecks(options: CheckOptions): Promise<boolean> {
     }
   }
 
-  // Output
   if (options.json) {
     const detailed: Record<string, number> = {};
     Object.values(categorizedErrors).forEach((group) => {
