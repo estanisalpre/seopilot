@@ -20,7 +20,7 @@ import { checkMetaRobots } from "./meta/checkMetaRobots.js";
 import { checkAnchorTargets } from "./links/checkAnchorTargets.js";
 // check performance
 import { checkViewportMeta } from "./performance/checkViewportMeta.js";
-import { checkScriptBlocking } from "./performance/checkScriptBlocking.js";
+/* import { checkScriptBlocking } from "./performance/checkScriptBlocking.js";*/
 import { checkPreload } from "./performance/checkPreload.js";
 import { checkViewportMetaResponsive } from "./performance/checkViewportMetaResponsive.js";
 // check semantics
@@ -50,7 +50,7 @@ export const htmlChecks: HtmlCheck[] = [
   checkButtons,
   checkFormLabels,
   checkViewportMeta,
-  checkScriptBlocking,
+  /* checkScriptBlocking, */
   checkPreload,
   checkAnchorTargets,
   checkImageFormats,
