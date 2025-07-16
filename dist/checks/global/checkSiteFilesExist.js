@@ -1,4 +1,3 @@
-// src/checks/global/checkSiteFilesExist.ts
 import { fileExists } from "../../utils/fs.js";
 const REQUIRED_FILES = [
     "robots.txt",

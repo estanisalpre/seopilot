@@ -5,6 +5,7 @@
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <!-- Falta <meta name="description"> -->
     <!-- Falta <link rel="canonical"> -->
+    <link rel="canonical" href="https://example.com/full-errors.html"> <!-- Aunque existe, no es correcto -->
     <!-- Falta meta Open Graph -->
     <title></title> <!-- Está vacío pero existe -->
     <script src="script.js"></script> <!-- No tiene async ni defer -->
@@ -21,7 +22,7 @@
       <img src="foto3.bmp"> <!-- Formato no moderno -->
     </main>
 
-    <a href="https://malicioso.com" target="_blank">Click acá</a> <!-- Sin rel="noopener" -->
+    <a href="https://malicioso.com" rel="noopener noreferrer" target="_blank"  >Click acá</a> <!-- Sin rel="noopener" -->
 
     <form>
       <input type="text" id="username"> <!-- Sin <label for="username"> -->

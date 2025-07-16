@@ -1,4 +1,3 @@
-// src/checks/global/checkSiteFilesExist.ts
 import { fileExists } from "../../utils/fs.js";
 import { CheckResult } from "../../types.js";
 
