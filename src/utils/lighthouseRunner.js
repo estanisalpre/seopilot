@@ -10,7 +10,6 @@ async function runLighthouse(url) {
     const chrome = await chrome_launcher_1.default.launch({ chromeFlags: ["--headless"] });
     const options = { port: chrome.port, output: "json" };
     const runnerResult = await (0, lighthouse_1.default)(url, options);
-    // Extrae métricas Core Web Vitals
     const lhr = runnerResult.lhr;
     const metrics = {
         lcp: lhr.audits["largest-contentful-paint"].displayValue,
