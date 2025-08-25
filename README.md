@@ -24,7 +24,6 @@ Ideal para proyectos estáticos y flujos de CI/CD donde el SEO importa desde el 
 - ✅ Funciona en cualquier framework moderno
 - ✅ Puede integrarse en CI (GitHub Actions, etc.)
 - ✅ Salida clara y útil para humanos o máquinas
-- ✅ Hecho con amor y café ☕
 
 ---
 

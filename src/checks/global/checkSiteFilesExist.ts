@@ -8,8 +8,6 @@ const REQUIRED_FILES = [
   "manifest.json",
 ];
 
-const OPTIONAL_FILES = ["humans.txt", "security.txt"];
-
 export function checkSiteFilesExist(basePath: string): CheckResult[] {
   const results: CheckResult[] = [];
 
@@ -17,15 +15,6 @@ export function checkSiteFilesExist(basePath: string): CheckResult[] {
     if (!fileExists(basePath, file)) {
       results.push({
         message: `Falta archivo requerido: ${file}`,
-        category: "Structure",
-      });
-    }
-  }
-
-  for (const file of OPTIONAL_FILES) {
-    if (!fileExists(basePath, file)) {
-      results.push({
-        message: `Archivo opcional no encontrado: ${file}`,
         category: "Structure",
       });
     }

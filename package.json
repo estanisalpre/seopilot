@@ -26,7 +26,9 @@
   "dependencies": {
     "chalk": "^5.4.1",
     "cheerio": "^1.1.0",
+    "chrome-launcher": "^1.2.0",
     "globby": "^14.1.0",
+    "lighthouse": "^12.8.1",
     "p-map": "^7.0.3"
   },
   "devDependencies": {
