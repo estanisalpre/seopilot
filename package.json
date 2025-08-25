@@ -1,6 +1,6 @@
 {
   "name": "seopilot",
-  "version": "0.0.2",
+  "version": "0.0.8",
   "description": "Herramienta CLI para análisis SEO en sitios estáticos.",
   "main": "dist/index.js",
   "scripts": {
@@ -24,13 +24,19 @@
   "license": "MIT",
   "type": "module",
   "dependencies": {
+    "boxen": "^8.0.1",
     "chalk": "^5.4.1",
     "cheerio": "^1.1.0",
+    "chrome-launcher": "^1.2.0",
+    "figlet": "^1.8.2",
     "globby": "^14.1.0",
+    "lighthouse": "^12.8.1",
+    "ora": "^8.2.0",
     "p-map": "^7.0.3"
   },
   "devDependencies": {
     "@types/cheerio": "^0.22.35",
+    "@types/figlet": "^1.7.0",
     "@types/node": "^24.0.13",
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",

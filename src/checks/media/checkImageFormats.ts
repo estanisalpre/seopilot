@@ -5,9 +5,13 @@ export function checkImageFormats($: cheerio.CheerioAPI): CheckResult[] {
   const results: CheckResult[] = [];
   $("img").each((_, el) => {
     const src = $(el).attr("src") || "";
-    if (src && !src.endsWith(".webp") && !src.endsWith(".avif")) {
+    if (
+      src &&
+      !src.endsWith(".svg") &&
+      !src.endsWith(".webp")
+    ) {
       results.push({
-        message: `Imagen no usa formato moderno (.webp o .avif): ${src}`,
+        message: `Imagen no usa formato moderno (.svg, .webp): ${src}`,
         category: "Performance",
       });
     }

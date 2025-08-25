@@ -1,1 +1,14 @@
 node_modules
+
+*.deb
+*.log
+*.tmp
+
+# Ignore lighthouse folder and files
+*lighthouse*/
+*Lighthouse*
+C:/Users/Agricapital/AppData/Local/Lighthouse*/
+C:\\Users\\Agricapital\\AppData\\Local\\Lighthouse*/
+
+# google installation
+google-chrome-stable_current_amd64.deb
