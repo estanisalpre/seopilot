@@ -21,9 +21,50 @@ Ideal para proyectos estáticos y flujos de CI/CD donde el SEO importa desde el 
 
 - ✅ Fácil de usar: `npx seopilot`
 - ✅ Soporte para `--verbose`, `--json`, `--limit`, `--fail-on-error`
+- ✅ Análisis automático de **Core Web Vitals** con Lighthouse (LCP, FID, CLS, TBT, FCP, score)
+- ✅ Recomendaciones automáticas según resultados de Lighthouse
 - ✅ Funciona en cualquier framework moderno
 - ✅ Puede integrarse en CI (GitHub Actions, etc.)
 - ✅ Salida clara y útil para humanos o máquinas
+
+---
+
+## 🚦 Análisis Lighthouse y Core Web Vitals
+
+SEOpilot ejecuta automáticamente [Lighthouse](https://developers.google.com/web/tools/lighthouse) sobre cualquier URL pública que le pases como argumento. Obtendrás métricas de **Core Web Vitals** y recomendaciones automáticas para mejorar el rendimiento y la experiencia de usuario.
+
+### Ejemplo de uso
+
+```bash
+npx seopilot https://www.tusitio.com
+```
+
+### Salida esperada
+
+```
+🚦 Ejecutando Lighthouse para https://www.tusitio.com...
+
+┌───────────────────────────────┐
+│ Core Web Vitals:              │
+│   lcp: '2.1 s',               │
+│   fid: '30 ms',               │
+│   cls: '0.01',                │
+│   tbt: '120 ms',              │
+│   fcp: '1.1 s',               │
+│   score: 0.98                 │
+└───────────────────────────────┘
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 🔎 Recomendaciones Lighthouse:┃
+┃ ✅ ¡Excelente! Tus métricas   ┃
+┃ Core Web Vitals están dentro  ┃
+┃ de los valores recomendados.  ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+```
+
+Si alguna métrica está fuera de los valores recomendados, SEOpilot te dará sugerencias claras para mejorar tu sitio.
+
+---
 
 ---
 
@@ -169,9 +210,9 @@ name: SEO Check
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   seo:
@@ -207,11 +248,11 @@ npx seopilot --path src/testing --verbose
 <html lang="en">
   <head>
     <title>Test</title>
-    <meta name="description" content="Página correcta">
+    <meta name="description" content="Página correcta" />
   </head>
   <body>
     <h1>Hola mundo</h1>
-    <img src="logo.png" alt="Logo">
+    <img src="logo.png" alt="Logo" />
   </body>
 </html>
 ```
@@ -221,7 +262,9 @@ npx seopilot --path src/testing --verbose
 ```html
 <html lang="es">
   <head></head>
-  <body><h1>Falta título</h1></body>
+  <body>
+    <h1>Falta título</h1>
+  </body>
 </html>
 ```
 
@@ -229,7 +272,9 @@ npx seopilot --path src/testing --verbose
 
 ```html
 <html lang="es">
-  <head><title>Error</title></head>
+  <head>
+    <title>Error</title>
+  </head>
   <body>
     <h1>Uno</h1>
     <h1>Dos</h1>
