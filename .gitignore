@@ -3,6 +3,7 @@ node_modules
 *.deb
 *.log
 *.tmp
+*.tgz
 
 # Ignore lighthouse folder and files
 *lighthouse*/
