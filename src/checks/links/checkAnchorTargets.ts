@@ -8,7 +8,7 @@ export function checkAnchorTargets($: cheerio.CheerioAPI): CheckResult[] {
     const href = $(el).attr("href");
 
     // Debug: mostrar el valor exacto del rel
-    console.log(`Debug - href: ${href}, rel: "${rel}"`);
+    // console.log(`Debug - href: ${href}, rel: "${rel}"`);
 
     if (!rel || !rel.includes("noopener")) {
       results.push({
