@@ -4,9 +4,10 @@ export function checkImageFormats($) {
         const src = $(el).attr("src") || "";
         if (src &&
             !src.endsWith(".svg") &&
-            !src.endsWith(".webp")) {
+            !src.endsWith(".webp") &&
+            !src.endsWith(".gif")) {
             results.push({
-                message: `Imagen no usa formato moderno (.svg, .webp): ${src}`,
+                message: `Imagen no usa formato moderno (.svg, .webp, .gif): ${src}`,
                 category: "Performance",
             });
         }
