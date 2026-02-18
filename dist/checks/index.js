@@ -13,7 +13,7 @@ import { checkMetaDescription } from "./meta/checkMetaDescription.js";
 import { checkCanonical } from "./meta/checkCanonical.js";
 import { checkOpenGraph } from "./meta/checkOpenGraph.js";
 import { checkMetaAuthorGenerator } from "./meta/checkMetaAuthorGenerator.js";
-import { checkMetaRobots } from "./meta/checkMetaRobots.js";
+//import { checkMetaRobots } from "./meta/checkMetaRobots.js";
 // check links
 import { checkAnchorTargets } from "./links/checkAnchorTargets.js";
 // check performance
@@ -53,7 +53,7 @@ export const htmlChecks = [
     checkImageFormats,
     checkLazyLoading,
     checkMetaAuthorGenerator,
-    checkMetaRobots,
+    //checkMetaRobots,
     checkDuplicateTags,
     checkTouchTargets,
     checkIframesHaveTitle,
