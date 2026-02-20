@@ -2,6 +2,8 @@ export function checkImageFormats($) {
     const results = [];
     $("img").each((_, el) => {
         const src = $(el).attr("src") || "";
+        if (src.startsWith("data:"))
+            return;
         if (src &&
             !src.endsWith(".svg") &&
             !src.endsWith(".webp") &&
