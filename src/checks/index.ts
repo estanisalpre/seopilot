@@ -3,7 +3,7 @@ import type { HtmlCheck, GlobalCheck } from "../types.js";
 // import
 // check accessibility
 import { checkImageAlt } from "./accessibility/checkImageAlt.js";
-import { checkButtons } from "./accessibility/checkButtons.js";
+//import { checkButtons } from "./accessibility/checkButtons.js";
 import { checkFormLabels } from "./accessibility/checkFormLabels.js";
 import { checkTouchTargets } from "./accessibility/checkTouchTargets.js";
 import { checkIframesHaveTitle } from "./accessibility/checkIframesHaveTitle.js";
@@ -47,7 +47,7 @@ export const htmlChecks: HtmlCheck[] = [
   checkCanonical,
   checkOpenGraph,
   checkImageAlt,
-  checkButtons,
+  //checkButtons,
   checkFormLabels,
   checkViewportMeta,
   //checkScriptBlocking,
