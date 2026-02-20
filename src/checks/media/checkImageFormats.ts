@@ -5,6 +5,7 @@ export function checkImageFormats($: cheerio.CheerioAPI): CheckResult[] {
   const results: CheckResult[] = [];
   $("img").each((_, el) => {
     const src = $(el).attr("src") || "";
+    if (src.startsWith("data:")) return;
     if (
       src &&
       !src.endsWith(".svg") &&
